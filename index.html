@@ -15,6 +15,10 @@
     <script src="https://unpkg.com/feather-icons"></script>
     <!-- faether icons end -->
 
+    <!-- AOS CSS -->
+    <link rel="stylesheet" href="https://unpkg.com/aos@next/dist/aos.css" />
+    <!-- AOS CSS END -->
+
     <!-- my style -->
     <link rel="stylesheet" href="css/style.css" />
     <!-- end -->
@@ -41,7 +45,7 @@
     <section class="hero" id="home">
       <main class="content">
         <h1>Nikmati Kelezatan <span>Bakso</span> Yang Hangat</h1>
-        <p>Bersama teman dan keluarga terdekat.</p>
+        <p></p>
         <a href="#menu" class="cta">Beli Sekarang</a>
       </main>
     </section>
@@ -67,14 +71,14 @@
     <section id="menu" class="menu">
       <h2><span>Menu</span> Kami</h2>
       <div class="row">
-        <div class="menu-card">
+        <div class="menu-card" data-aos="flip-left" data-aos-duration="1500" data-aos-easing="ease-out-cubic">
           <img src="img/2.jpg" alt="Kopi" class="menu-card-img" />
           <div class="intro">
             <h3>Bakso Ayam</h3>
             <p>Mulai dari Rp. 1000,-</p>
           </div>
         </div>
-        <div class="menu-card">
+        <div class="menu-card" data-aos="flip-left" data-aos-duration="1500" data-aos-delay="300" data-aos-easing="ease-out-cubic">
           <img src="img/3.jpg" alt="Kopi" class="menu-card-img" />
           <div class="intro">
             <h3>Bakso Ayam</h3>
@@ -119,6 +123,25 @@
       feather.replace();
     </script>
     <!-- faether icons end -->
+
+    <!-- GSAP -->
+    <script src="https://cdn.jsdelivr.net/npm/gsap@3.12.5/dist/gsap.min.js"></script>
+    <script src="https://cdn.jsdelivr.net/npm/gsap@3.12.5/dist/TextPlugin.min.js"></script>
+    <script>
+      gsap.registerPlugin(TextPlugin);
+      gsap.to(".hero .content p", { duration: 5, delay: 2, text: "Bersama teman dan keluarga terdekat." });
+      gsap.from(".navbar-logo", { duration: 1.5, x: -100, opacity: 0, delay: 1, ease: "back" });
+      gsap.from(".navbar", { duration: 1, y: -100, opacity: 0 });
+    </script>
+
+    <!-- GSAP END -->
+
+    <!-- AOS SCRIPT -->
+    <script src="https://unpkg.com/aos@next/dist/aos.js"></script>
+    <script>
+      AOS.init();
+    </script>
+    <!-- AOS SCRIPT END -->
 
     <!-- my javascript -->
     <script src="js/script.js"></script>
