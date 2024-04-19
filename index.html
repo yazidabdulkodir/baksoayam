@@ -32,21 +32,31 @@
     <!-- my style -->
     <link rel="stylesheet" href="css/style.css" />
     <!-- end -->
+
+    <!-- alpine js -->
+    <script defer src="https://cdn.jsdelivr.net/npm/alpinejs@3.x.x/dist/cdn.min.js"></script>
+    <!-- alpine js end -->
+
+    <!-- app -->
+    <script src="src/app.js"></script>
+    <!-- app end -->
   </head>
   <body>
     <!-- navbar -->
-    <nav class="navbar">
+    <nav class="navbar" x-data>
       <a href="#" class="navbar-logo"><span>Bakso</span>-Ayam</a>
       <div class="navbar-nav">
         <a href="#home">Home</a>
         <a href="#about">Tentang Kami</a>
         <a href="#menu">Menu</a>
         <a href="#products">Produk</a>
-        <a href="#contact">Kontak</a>
       </div>
       <div class="navbar-extra">
         <a href="#" id="search-button"><i data-feather="search"></i></a>
-        <a href="#" id="shopping-cart-button"><i data-feather="shopping-cart"></i></a>
+        <a href="#" id="shopping-cart-button">
+          <i data-feather="shopping-cart"></i>
+          <span class="quantity-badge" x-show="$store.cart.quantity" x-text="$store.cart.quantity"></span>
+        </a>
         <a href="#" id="hamburger-menu"><i data-feather="menu"></i></a>
       </div>
 
@@ -59,21 +69,43 @@
 
       <!-- shopping cart -->
       <div class="shopping-cart">
-        <div class="cart-item">
-          <img src="img/product1.jpg" alt="bakso ayam" />
-          <div class="item-detail">
-            <h3>Bakso Ayam Isi 50</h3>
-            <div class="item-price">Rp. 30.000</div>
+        <template x-for="(item, index) in $store.cart.items" x-keys="index">
+          <div class="cart-item">
+            <img :src="`img/${item.img}`" :alt="item.name" />
+            <div class="item-detail">
+              <h3 x-text="item.name"></h3>
+              <div class="item-price">
+                <span x-text="rupiah(item.price)"></span> &times;
+                <button id="remove" @click="$store.cart.remove(item.id)">&minus;</button>
+                <span x-text="item.quantity"></span>
+                <button id="add" @click="$store.cart.add(item)">&plus;</button> &equals;
+                <span x-text="rupiah(item.total)"></span>
+              </div>
+            </div>
           </div>
-          <i data-feather="trash-2" class="remove-item"></i>
-        </div>
-        <div class="cart-item">
-          <img src="img/product1.jpg" alt="bakso ayam" />
-          <div class="item-detail">
-            <h3>Bakso Ayam Isi 100</h3>
-            <div class="item-price">Rp. 75.000</div>
-          </div>
-          <i data-feather="trash-2" class="remove-item"></i>
+        </template>
+        <h4 x-show="!$store.cart.items.length" style="margin-top: 1rem">TROLI KOSONG</h4>
+        <h4 x-show="$store.cart.items.length">TOTAL : <span x-text="rupiah($store.cart.total)"></span></h4>
+        <div class="form-container" x-show="$store.cart.items.length">
+          <form action="" id="checkoutForm">
+            <h5>Customer Detail</h5>
+            <label for="name">
+              <span>Nama</span>
+              <input type="text" name="name" id="name" />
+            </label>
+
+            <label for="email">
+              <span>Email</span>
+              <input type="email" name="email" id="email" />
+            </label>
+
+            <label for="phone">
+              <span>No. HP</span>
+              <input type="number" name="phone" id="phone" autocomplete="off" />
+            </label>
+
+            <button class="checkout-button" type="submit" id="checkout-button" value="checkout">CHECKOUT</button>
+          </form>
         </div>
       </div>
       <!-- shopping cart end -->
@@ -137,68 +169,55 @@
     <!-- menu section end -->
 
     <!-- product section -->
-    <section class="products" id="products">
+    <section class="products" id="products" x-data="products">
       <h2><span>Produk</span> Kami</h2>
       <div class="row">
-        <div class="product-card">
-          <div class="product-icons">
-            <a href="#"><i data-feather="shopping-cart"></i></a>
-            <a href="#" class="item-detail-button"><i data-feather="info"></i></a>
+        <template x-for="(item, index) in items" x-key="index">
+          <div class="product-card">
+            <div class="product-icons">
+              <a href="#" @click.prevent="$store.cart.add(item)">
+                <svg width="24" height="24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+                  <use href="img/feather-sprite.svg#shopping-cart" />
+                </svg>
+              </a>
+              <a href="#" class="item-detail-button">
+                <svg width="24" height="24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+                  <use href="img/feather-sprite.svg#info" />
+                </svg>
+              </a>
+            </div>
+            <div class="product-image">
+              <img :src="`img/${item.img}`" :alt="item.name" />
+            </div>
+            <div class="product-content">
+              <h3 x-text="item.name"></h3>
+              <div class="product-stars">
+                <svg width="24" height="24" fill="currentColor" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+                  <use href="img/feather-sprite.svg#star" />
+                </svg>
+                <svg width="24" height="24" fill="currentColor" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+                  <use href="img/feather-sprite.svg#star" />
+                </svg>
+                <svg width="24" height="24" fill="currentColor" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+                  <use href="img/feather-sprite.svg#star" />
+                </svg>
+                <svg width="24" height="24" fill="currentColor" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+                  <use href="img/feather-sprite.svg#star" />
+                </svg>
+                <svg width="24" height="24" fill="currentColor" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+                  <use href="img/feather-sprite.svg#star" />
+                </svg>
+              </div>
+              <div class="product-price"><span x-text="rupiah(item.price)"></span></div>
+            </div>
           </div>
-          <div class="product-image">
-            <img src="img/product1.jpg" alt="bakso ayam" />
-          </div>
-          <h3>Bakso Ayam Isi 50</h3>
-          <div class="product-stars">
-            <i data-feather="star" class="star-full"></i>
-            <i data-feather="star" class="star-full"></i>
-            <i data-feather="star" class="star-full"></i>
-            <i data-feather="star" class="star-full"></i>
-            <i data-feather="star"></i>
-          </div>
-          <div class="product-price">Rp. 30.000,- <span>Rp. 45.000,-</span></div>
-        </div>
-        <div class="product-card">
-          <div class="product-icons">
-            <a href="#"><i data-feather="shopping-cart"></i></a>
-            <a href="#" class="item-detail-button"><i data-feather="info"></i></a>
-          </div>
-          <div class="product-image">
-            <img src="img/product1.jpg" alt="bakso ayam" />
-          </div>
-          <h3>Bakso Ayam Isi 100</h3>
-          <div class="product-stars">
-            <i data-feather="star" class="star-full"></i>
-            <i data-feather="star" class="star-full"></i>
-            <i data-feather="star" class="star-full"></i>
-            <i data-feather="star" class="star-full"></i>
-            <i data-feather="star"></i>
-          </div>
-          <div class="product-price">Rp. 75.000,- <span>Rp. 90.000,-</span></div>
-        </div>
+        </template>
       </div>
     </section>
     <!-- product section end -->
 
     <!-- contact section -->
-    <div class="container" id="contact">
-      <h2><span>Kontak</span> Kami</h2>
-      <form action="#">
-        <div class="form-group">
-          <label for="name">Nama:</label>
-          <input type="text" id="name" name="name" required />
-        </div>
-        <div class="form-group">
-          <label for="email">Email:</label>
-          <input type="email" id="email" name="email" required />
-        </div>
-        <div class="form-group">
-          <label for="message">Pesan:</label>
-          <textarea id="message" name="message" rows="4" required></textarea>
-        </div>
-        <button type="submit">Kirim Pesan</button>
-      </form>
-    </div>
+
     <!-- contact section end -->
 
     <!-- footer -->
@@ -244,7 +263,7 @@
     <script src="https://cdn.jsdelivr.net/npm/gsap@3.12.5/dist/TextPlugin.min.js"></script>
     <script>
       gsap.registerPlugin(TextPlugin);
-      gsap.to(".hero .content p", { duration: 5, delay: 2, text: "Bersama teman dan keluarga terdekat." });
+      gsap.to(".hero .content p", { duration: 3, delay: 2, text: "Bersama teman dan keluarga terdekat." });
       gsap.from(".navbar-logo", { duration: 1.5, x: -100, opacity: 0, delay: 1, ease: "back" });
       gsap.from(".navbar", { duration: 1, y: -100, opacity: 0 });
     </script>
