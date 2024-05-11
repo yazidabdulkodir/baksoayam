@@ -20,6 +20,7 @@ body {
   font-family: "Poppins", sans-serif;
   background-color: var(--bg);
   color: #fff;
+  overflow-x: hidden;
 }
 
 /* navbar */
@@ -571,10 +572,10 @@ footer .credit a {
   position: relative;
   background-color: #fefefe;
   color: var(--bg);
-  margin: 15% auto;
-  padding: 1.2rem;
+  margin: 15% auto; /*15%*/
+  padding: 1.2rem; /*1.2*/
   border: 1px solid #666;
-  width: 80%;
+  width: 80%; /*80%*/
   animation: animateModal 0.5s;
 }
 
@@ -640,6 +641,10 @@ footer .credit a {
 @media (max-width: 768px) {
   html {
     font-size: 62.5%;
+  }
+
+  body {
+    overflow-x: hidden;
   }
 
   #hamburger-menu {

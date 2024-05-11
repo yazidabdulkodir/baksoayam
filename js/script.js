@@ -42,26 +42,37 @@ document.addEventListener("click", function (e) {
   }
 });
 
-//modal box
+// Modal box
 const itemDetailModal = document.querySelector("#item-detail-modal");
 const itemDetailButtons = document.querySelectorAll(".item-detail-button");
 
+// Fungsi untuk menampilkan modal
+const showModal = () => {
+  itemDetailModal.style.display = "flex";
+};
+
+// Fungsi untuk menyembunyikan modal
+const hideModal = () => {
+  itemDetailModal.style.display = "none";
+};
+
+// Event listener untuk tombol detail item
 itemDetailButtons.forEach((btn) => {
-  btn.onclick = (e) => {
-    itemDetailModal.style.display = "flex";
+  btn.addEventListener("click", (e) => {
+    showModal(); // Memanggil fungsi untuk menampilkan modal
     e.preventDefault();
-  };
+  });
 });
 
-// click button close modal
-document.querySelector(".modal .close-icon").onclick = (e) => {
-  itemDetailModal.style.display = "none";
+// Event listener untuk tombol close modal
+document.querySelector(".modal .close-icon").addEventListener("click", (e) => {
+  hideModal(); // Memanggil fungsi untuk menyembunyikan modal
   e.preventDefault();
-};
+});
 
-//klik di luar modal
-window.onclick = (e) => {
+// Event listener untuk menutup modal saat mengklik di luar modal
+window.addEventListener("click", (e) => {
   if (e.target === itemDetailModal) {
-    itemDetailModal.style.display = "none";
+    hideModal(); // Memanggil fungsi untuk menyembunyikan modal
   }
-};
+});
