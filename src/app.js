@@ -1,8 +1,8 @@
 document.addEventListener("alpine:init", () => {
   Alpine.data("products", () => ({
     items: [
-      { id: 1, name: "Bakso Ayam Isi 50", img: "product1.jpg", price: 40000 },
-      { id: 2, name: "Bakso Ayam Isi 100", img: "product2.jpeg", price: 75000 },
+      { id: 1, name: "Bakso Ikan-Ayam Isi 50", img: "product1.jpg", price: 50000 },
+      { id: 2, name: "Bakso Ikan-Ayam Isi 100", img: "product2.jpeg", price: 100000 },
     ],
   }));
 

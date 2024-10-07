@@ -367,14 +367,16 @@ body {
 .about,
 .menu,
 .products,
-.container {
+.container,
+.contact {
   padding: 8rem 7% 1.4rem;
 }
 
 .about h2,
 .menu h2,
 .products h2,
-.container h2 {
+.container h2,
+.contact h2 {
   text-align: center;
   font-size: 2.6rem;
   margin-bottom: 3rem;
@@ -383,7 +385,8 @@ body {
 .about h2 span,
 .menu h2 span,
 .products h2 span,
-.container h2 span {
+.container h2 span,
+.contact h2 span {
   color: var(--primary);
 }
 
@@ -419,7 +422,8 @@ body {
 
 /* menu section */
 .menu h2,
-.container h2 {
+.container h2,
+.contact h2 {
   margin-bottom: 1rem;
 }
 
@@ -427,12 +431,17 @@ body {
   font-size: 1.4rem;
 }
 
-.menu p {
+.menu p,
+.contact p {
   text-align: center;
   max-width: 30rem;
   margin: auto;
   font-weight: 1.2rem;
   line-height: 1.6;
+}
+
+.contact p {
+  font-style: italic;
 }
 
 .menu .row {
@@ -450,10 +459,10 @@ body {
 .menu .row .menu-card img {
   border-radius: 10%;
   width: 200px;
-  height: 250px;
+  height: 150px;
   margin: 50px;
   margin-top: 5px;
-  box-shadow: 5px 5px 15px var(--primary);
+
   overflow: hidden;
 }
 
@@ -536,22 +545,41 @@ body {
   font-weight: bold;
 }
 
+.contact .row {
+  max-width: 80%;
+  justify-content: center;
+  align-items: center;
+  display: flex;
+  margin-top: 2rem;
+  flex-wrap: wrap;
+  margin-left: auto;
+  margin-right: auto;
+}
+
+.contact .row .map {
+  flex: 1 1 45rem;
+  width: 100%;
+  max-width: 600px; /* Atur ukuran maksimal agar proporsional */
+  object-fit: cover;
+  height: 380px; /* Atur tinggi peta */
+}
+
 /* footer */
 footer {
   background-color: var(--primary);
   text-align: center;
-  padding: 2rem 0;
+  padding: 1rem 0;
   margin-top: 5rem;
 }
 
 footer .credit {
-  font-size: 1.4rem;
+  font-size: 1rem;
 }
 
 footer .credit a {
   color: var(--bg);
   font-weight: 700;
-  font-size: 1.4rem;
+  font-size: 1rem;
 }
 
 /* modal box */
@@ -711,6 +739,14 @@ footer .credit a {
 
   .menu p {
     font-size: 1.3rem;
+  }
+
+  .contact .row {
+    flex-wrap: wrap;
+  }
+
+  .contact .row .map {
+    height: 28rem;
   }
 
   .container {

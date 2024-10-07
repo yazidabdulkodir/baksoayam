@@ -3,8 +3,9 @@
   <head>
     <meta charset="UTF-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-    <title>Bakso Ayam</title>
+    <title>Bakso Mang Asep</title>
 
+    <link rel="icon" href="img/webcon-66cdd882b7680.webp" type="webp" />
     <!-- fonts -->
     <link rel="preconnect" href="https://fonts.googleapis.com" />
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
@@ -40,12 +41,13 @@
   <body>
     <!-- navbar -->
     <nav class="navbar" x-data>
-      <a href="#" class="navbar-logo"><span>Bakso</span>-Ayam</a>
+      <a href="#" class="navbar-logo"><span>Bakso</span> Mang Asep</a>
       <div class="navbar-nav">
         <a href="#home">Home</a>
         <a href="#about">Tentang Kami</a>
         <a href="#menu">Menu</a>
         <a href="#products">Produk</a>
+        <a href="#contact">Alamat</a>
       </div>
       <div class="navbar-extra">
         <a href="#" id="search-button"><i data-feather="search"></i></a>
@@ -127,7 +129,7 @@
 
     <!-- whatsapp btn -->
     <div class="whatsapp-btn-container">
-      <a href="#" class="whatsapp-btn"><i class="fa-brands fa-whatsapp"></i></a>
+      <a href="https://bit.ly/4euw8WL" class="whatsapp-btn" target="_blank"><i class="fa-brands fa-whatsapp"></i></a>
       <span>Kontak Kami</span>
     </div>
     <!-- no wa -->
@@ -155,17 +157,17 @@
     <section id="menu" class="menu">
       <h2><span>Menu</span> Kami</h2>
       <div class="row">
-        <div class="menu-card" data-aos="flip-left" data-aos-duration="1500" data-aos-easing="ease-out-cubic">
-          <img src="img/2.jpg" alt="bakso ayam" class="menu-card-img" />
+        <div class="menu-card">
+          <img src="img/bakso1.jpg" alt="bakso ayam" class="menu-card-img" />
           <div class="intro">
-            <h3>Bakso Ayam</h3>
+            <h3>Bakso Ikan-Ayam</h3>
             <p>Mulai dari Rp. 1000,-</p>
           </div>
         </div>
-        <div class="menu-card" data-aos="flip-left" data-aos-duration="1500" data-aos-delay="300" data-aos-easing="ease-out-cubic">
-          <img src="img/3.jpg" alt="bakso ayam" class="menu-card-img" />
+        <div class="menu-card">
+          <img src="img/bakso2.jpg" alt="bakso ayam" class="menu-card-img" />
           <div class="intro">
-            <h3>Bakso Ayam</h3>
+            <h3>Bakso Ikan-Ayam</h3>
             <p>Mulai dari Rp. 1000,-</p>
           </div>
         </div>
@@ -221,18 +223,28 @@
     </section>
     <!-- product section end -->
 
+    <!-- contact -->
+    <section id="contact" class="contact">
+      <h2><span>Alamat</span> Kami</h2>
+      <p>Sebelah Toko Sadam Satia, Dusun Wanajaya RT 019 RW 005, Desa Ciasem Tengah, Kec Ciasem, Kab Subang.</p>
+      <div class="row">
+        <iframe
+          src="https://www.google.com/maps/embed?pb=!1m14!1m12!1m3!1d247.84499473631925!2d107.6907827402338!3d-6.3266033091618645!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!5e0!3m2!1sid!2sid!4v1728284919029!5m2!1sid!2sid"
+          allowfullscreen=""
+          loading="lazy"
+          referrerpolicy="no-referrer-when-downgrade"
+          class="map"
+        ></iframe>
+      </div>
+    </section>
+    <!-- contact end -->
+
     <!-- footer -->
     <footer>
       <div class="credit">
         <p>
           Created by
-          <a href="https://yazidabdulkodir.github.io/"
-            >yazidabdulkodir
-            <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="black" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="feather feather-external-link">
-              <path d="M18 13v6a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2V8a2 2 0 0 1 2-2h6"></path>
-              <polyline points="15 3 21 3 21 9"></polyline>
-              <line x1="10" y1="14" x2="21" y2="3"></line></svg></a
-          >. | &copy; 2024.
+          <a href="https://yazidabdulkodir.github.io/">yazidabdulkodir </a> | &copy; 2024.
         </p>
       </div>
     </footer>
